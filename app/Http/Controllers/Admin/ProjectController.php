@@ -44,10 +44,8 @@ class ProjectController extends Controller
     }
 
     public function update(ProjectStoreRequest $request, $id){
-        Log::debug($id);
         $project = Project::findOrFail($id);
-        Log::debug(var_export($project, true));
-        $data = $request->validate();  
+        $data = $request->validated();  
 
         $project->update($data);
 

@@ -23,7 +23,7 @@
                     <div class="mb-3">
                         <label for="link" class="form-label">Link</label>
                         <input type="text" name="link" class="form-control @error("link") is-invalid                            
-                        @enderror" value="{{old("title")}}">
+                        @enderror" value="{{old("link")}}">
                         @error("link")
                             <div class="invalid-feedback">Campo Obbligatorio</div>
                         @enderror
@@ -55,7 +55,7 @@
 
                     <div class="mb-3">
                         <label for="date" class="form-label">Data</label>
-                        <input type="date" name="date"  class="form-control @error("release") is-invalid                            
+                        <input type="date" name="date"  class="form-control @error("date") is-invalid                            
                         @enderror" value="{{old("date")}}">
                         @error("date")
                             <div class="invalid-feedback">Campo Obbligatorio</div>
