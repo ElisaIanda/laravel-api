@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectStoreRequest;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use Illuminate\Support\Facades\Log;
+use PgSql\Lob;
 
 class ProjectController extends Controller
 {
@@ -25,9 +27,8 @@ class ProjectController extends Controller
         return view("admin.projects.create");
     }
 
-    public function store(ProjectStoreRequest $request, $id){
+    public function store(ProjectStoreRequest $request){
         $data = $request->validated();
-        $project = Project::findOrFail($id);
 
         // Questo fa il new project, il fill e il save tutto insieme
         $project = Project::create($data);
@@ -43,8 +44,9 @@ class ProjectController extends Controller
     }
 
     public function update(ProjectStoreRequest $request, $id){
+        Log::debug($id);
         $project = Project::findOrFail($id);
-
+        Log::debug(var_export($project, true));
         $data = $request->validate();  
 
         $project->update($data);

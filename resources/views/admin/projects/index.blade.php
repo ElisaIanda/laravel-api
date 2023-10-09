@@ -9,14 +9,19 @@
             </div>
 
             @foreach ($projects as $singleProject)
-                <div class="col">
+                <div class="col-4">
                     <div class="card">
-                        <img src="{{ $singleProject['image'] }}" alt="">
-                        <h1>{{ $singleProject->title }}</h1>
+                        <img src="{{ $singleProject['image'] }}" alt="{{ $singleProject->title }}" style="height: 200px">
 
-                        <a href="{{ route('admin.projects.show', $singleProject->id) }}" class="btn btn-primary btn-lg"
-                            type="button">Dettagli
-                        </a>
+                        <div class="card-body">
+                            <h3 class="text-center">{{ $singleProject->title }}</h3>
+
+                            <div class="text-center">
+                                <a href="{{ route('admin.projects.show', $singleProject->id) }}"
+                                    class="btn btn-primary small" type="button">Dettagli
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             @endforeach
