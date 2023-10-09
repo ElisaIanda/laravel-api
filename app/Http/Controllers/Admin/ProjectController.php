@@ -39,4 +39,35 @@ class ProjectController extends Controller
 
         return redirect()->route("admin.projects.show", $project->id);
     }
+
+    
+    public function edit($id){
+        $project = Project::findOrFail($id);
+
+        return view("admin.projects.edit", ["project" => $project]);
+    }
+
+    public function update(Request $request, $id){
+        $project = Project::findOrFail($id);
+
+        $data = $request->validate([
+            "title"=>"required|string|max:255",
+            "link"=>"required|string",
+            "description"=>"required|string",
+            "image"=>"required|string|max:255",
+            "date"=>"required|date",
+        ]);  
+
+        $project->update($data);
+
+        return redirect()->route('admin.projects.show', $project->id);
+    }
+
+    public function destroy($id){
+        $project = Project::findOrFail($id);
+
+        $project->delete();
+
+        return redirect()->route('admin.project.index');
+    }
 }
