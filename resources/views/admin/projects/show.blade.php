@@ -21,7 +21,8 @@
             </div>
 
             <div class="card my-3 p-0">
-                <img src="{{ $project->image }}" class="card-img-top w-100" alt="{{ $project->title }}">
+                {{-- $project->image  contiene il percorso dell'immagine--}}
+                <img src="{{ asset('/storage/' . $project->image ) }}" class="card-img-top w-100" alt="{{ $project->title }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ $project->title }}</h5>
                     <p class="card-text">{{ $project->description }}</p>

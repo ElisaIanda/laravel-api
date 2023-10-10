@@ -7,6 +7,7 @@ use App\Http\Requests\ProjectStoreRequest;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use PgSql\Lob;
 
 class ProjectController extends Controller
@@ -46,6 +47,12 @@ class ProjectController extends Controller
     public function update(ProjectStoreRequest $request, $id){
         $project = Project::findOrFail($id);
         $data = $request->validated();  
+
+        // Salvo il file
+        $image_path = Storage::put("projects", $data["image"]);
+
+        // salvo $image_path
+        $data["image"] = $image_path;
 
         $project->update($data);
 

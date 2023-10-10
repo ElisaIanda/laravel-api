@@ -5,8 +5,8 @@
         <div class="row">
             <div class="col ">
                 
-
-                <form action="{{ route('admin.projects.update', $project->id) }}" method="POST">
+                {{-- aggiungo enctype="multipart/form-data in modo che il form riesca a ricevere il file sottoforma di file --}}
+                <form action="{{ route('admin.projects.update', $project->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf()
 
                     @method('put')
@@ -54,10 +54,10 @@
 
                     <div class="mb-3">
                         <label for="image" class="form-label">Immagine</label>
-                        <input type="text" name="image"
+                        {{-- cambio il tyle in file per permettere l'upload e cancello il value perchè non è previsto nel type file --}}
+                        <input type="file" name="image"
                             class="form-control @error('image') is-invalid                            
-                        @enderror"
-                            value="{{ old('image', $project->image) }}">
+                        @enderror>
                         @error('image')
                             <div class="invalid-feedback">Questo campo è obbligatorio</div>
                         @enderror
