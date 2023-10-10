@@ -9,9 +9,9 @@
             </div>
 
             @foreach ($projects as $singleProject)
-                <div class="col-4">
+                <div class="col-4 mb-4">
                     <div class="card">
-                        <img src="{{ $singleProject['image'] }}" alt="{{ $singleProject->title }}" style="height: 200px">
+                        <img src="{{ asset('/storage/'. $singleProject['image'])}}" alt="{{ $singleProject->title }}" style="height: 200px">
 
                         <div class="card-body">
                             <h3 class="text-center">{{ $singleProject->title }}</h3>

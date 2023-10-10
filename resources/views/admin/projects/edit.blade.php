@@ -54,9 +54,12 @@
 
                     <div class="mb-3">
                         <label for="image" class="form-label">Immagine</label>
+
+                        {{-- per visualizzare l'immagine attuale --}}
+                        <img class="img-thumbnail w-100" src="{{ asset('/storage/'. $project->image)}}" alt="">
+
                         {{-- cambio il tyle in file per permettere l'upload e cancello il value perchè non è previsto nel type file --}}
-                        <input type="file" name="image"
-                            class="form-control @error('image') is-invalid                            
+                        <input type="file" name="image" class="form-control @error('image') is-invalid "                           
                         @enderror>
                         @error('image')
                             <div class="invalid-feedback">Questo campo è obbligatorio</div>

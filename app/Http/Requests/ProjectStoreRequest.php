@@ -32,7 +32,7 @@ class ProjectStoreRequest extends FormRequest
             "title"=>"required|string|max:255",
             "link"=>"required|string",
             "description"=>"required|string",
-            "image"=>"required|string|max:255",
+            "image"=>"nullable|image",
             "date"=>"required|date",
         ];
     }

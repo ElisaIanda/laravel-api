@@ -4,7 +4,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col ">
-                <form action="{{route("admin.projects.store")}}" method="POST">
+                <form action="{{route("admin.projects.store")}}" method="POST" enctype="multipart/form-data">
                     @csrf()
                     
 
@@ -44,8 +44,8 @@
 
                     <div class="mb-3">
                         <label for="image" class="form-label">Immagine</label>
-                        <input type="text"  name="image" class="form-control @error("image") is-invalid                            
-                        @enderror" value="{{old("image")}}">
+                        <input type="file" accept="image/*" name="image" class="form-control @error("image") is-invalid                            
+                        @enderror">
                         @error("image")
                             <div class="invalid-feedback">Campo Obbligatorio</div>
                         @enderror
