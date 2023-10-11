@@ -35,8 +35,12 @@ class ProjectController extends Controller
     {
         $data = $request->validated();
 
-        // Salvo il file in data che è quello che passo al project per creare un nuovo progetto
-        $data["image"] = Storage::put("projects", $data["image"]);
+        if (isset($data["image"])) {
+            // Salvo il file in data che è quello che passo al project per creare un nuovo progetto
+            $data["image"] = Storage::put("projects", $data["image"]);
+        };
+
+
 
         // Questo fa il new project, il fill e il save tutto insieme
         $project = Project::create($data);
@@ -61,7 +65,7 @@ class ProjectController extends Controller
         if (isset($data["image"])) {
 
             // Faccio un controllo se esiste gia l'immagine la vado a cancellare
-            if($project->image){
+            if ($project->image) {
                 Storage::delete($project->image);
             }
 
@@ -82,7 +86,7 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
 
         // In questo modo quando cancello il project si cancella anche il file
-        if($project->image){
+        if ($project->image) {
             Storage::delete($project->image);
         }
 
