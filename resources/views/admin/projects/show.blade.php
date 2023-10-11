@@ -26,6 +26,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $project->title }}</h5>
                     <p class="card-text">{{ $project->description }}</p>
+                    <p class="card-text">{{ $project->type?->title }}</p>
                     <p class="card-text">
                         <small class="text-body-secondary">
                             <a href="{{ $project->link }}">{{ $project->link }}</a>

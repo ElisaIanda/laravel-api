@@ -66,6 +66,17 @@
                         @enderror
                     </div>
 
+                    <div class="mb-3">
+                        <label class="form-label">Categoria</label>
+                            <select class="form-select" name="type_id">
+                            @foreach ($types as $type)
+                            <option value="{{ $type->id }}" {{ $project->types_id === $type->id ? 'selected' : '' }}>
+                                {{$type->title}}
+                            </option>
+                            @endforeach
+                            </select>
+                    </div>
+
 
 
                     <div class="mb-3">

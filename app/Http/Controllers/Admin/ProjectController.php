@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectStoreRequest;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use PgSql\Lob;
@@ -28,7 +29,9 @@ class ProjectController extends Controller
 
     public function create()
     {
-        return view("admin.projects.create");
+        $types = Type::all();
+
+        return view("admin.projects.create", ["types" => $types]);
     }
 
     public function store(ProjectStoreRequest $request)
@@ -52,8 +55,9 @@ class ProjectController extends Controller
     public function edit($id)
     {
         $project = Project::findOrFail($id);
+        $types = Type::all();
 
-        return view("admin.projects.edit", ["project" => $project]);
+        return view("admin.projects.edit", ["project" => $project], ["types" => $types]);
     }
 
     public function update(ProjectStoreRequest $request, $id)
