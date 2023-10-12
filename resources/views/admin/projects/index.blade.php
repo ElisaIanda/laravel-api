@@ -15,6 +15,7 @@
 
                         <div class="card-body">
                             <h3 class="text-center">{{ $singleProject->title }}</h3>
+                            
                             <div class="">{{ $singleProject->type?->title }}</div>
 
                             <div class="text-center">

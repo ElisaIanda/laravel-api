@@ -44,7 +44,6 @@ class ProjectController extends Controller
         };
 
 
-
         // Questo fa il new project, il fill e il save tutto insieme
         $project = Project::create($data);
 

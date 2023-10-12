@@ -13,7 +13,8 @@ class TypesTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $types = ['FrontEnd', 'Backend', 'FullStack'];          
+        $types = ['FrontEnd', 'Backend', 'FullStack'];   
+        
         foreach ($types as $type) {             
             $new_type = new Type();             
             $new_type->title = $type;             
