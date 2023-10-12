@@ -42,7 +42,7 @@
                         </small>
                     </p>
                     <p class="card-text">
-                        <small class="text-body-secondary">{{ $project->date }}</small>
+                        <small class="text-body-secondary">{{date('Y-m-d', strtotime($project->date))}}</small>
                     </p>
                 </div>
             </div>
