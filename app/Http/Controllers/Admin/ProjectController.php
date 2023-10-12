@@ -31,8 +31,9 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
+        $technologies = Technology::all();
 
-        return view("admin.projects.create", ["types" => $types]);
+        return view("admin.projects.create", ["types" => $types,"technologies" =>$technologies]);
     }
 
     public function store(ProjectStoreRequest $request)
@@ -48,6 +49,11 @@ class ProjectController extends Controller
         // Questo fa il new project, il fill e il save tutto insieme
         $project = Project::create($data);
 
+        if(key_exists("technologies", $data)){
+            $project->technologies()->attach($data["technologies"]);
+        }
+
+
         return redirect()->route("admin.projects.show", $project->id);
     }
 
@@ -57,8 +63,9 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
         $types = Type::all();
         $technologies = Technology::all();
+        // dd($technologies);
 
-        return view("admin.projects.edit", ["project" => $project], ["types" => $types], ["technologies" => $technologies]);
+        return view("admin.projects.edit", ["project" => $project,"types" => $types,"technologies" =>$technologies]);
     }
 
     public function update(ProjectStoreRequest $request, $id)
@@ -81,6 +88,9 @@ class ProjectController extends Controller
             $data["image"] = $image_path;
         }
 
+        // Assegnazione delle technologies
+        $project->technologies()->sync($data["technologies"]);
+
         $project->update($data);
 
         return redirect()->route('admin.projects.show', $project->id);
@@ -94,6 +104,8 @@ class ProjectController extends Controller
         if ($project->image) {
             Storage::delete($project->image);
         }
+
+        $project->technologies()->detach();
 
         $project->delete();
 

@@ -57,6 +57,8 @@
                         @enderror
                     </div>
 
+
+
                     <div class="mb-3">
                         <label class="form-label">Categoria</label>
                         <select class="form-select" name="type_id">
@@ -65,6 +67,23 @@
                             @endforeach
                         </select>
                     </div>
+
+
+
+                    <div class="mb-3">
+                        <label class="form-label">Tecnologie usate</label>
+                        <div>
+                            @foreach ($technologies as $technology)
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="technologies[]" id="{{ $technology->slug }}"
+                                        value="{{ $technology->id }}">
+                                    <label class="form-check-label" for="{{ $technology->slug }}">{{ $technology->title }}</label>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+
 
                     <div class="mb-3">
                         <label for="date" class="form-label">Data</label>
@@ -76,6 +95,8 @@
                             <div class="invalid-feedback">Campo Obbligatorio</div>
                         @enderror
                     </div>
+
+
 
                     <div class="d-flex justify-content-between">
                         <button class="btn btn-primary mt-5 mb-4 px-5 fw-bold">Aggiungi</button>
