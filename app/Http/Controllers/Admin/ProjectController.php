@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectStoreRequest;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -55,8 +56,9 @@ class ProjectController extends Controller
     {
         $project = Project::findOrFail($id);
         $types = Type::all();
+        $technologies = Technology::all();
 
-        return view("admin.projects.edit", ["project" => $project], ["types" => $types]);
+        return view("admin.projects.edit", ["project" => $project], ["types" => $types], ["technologies" => $technologies]);
     }
 
     public function update(ProjectStoreRequest $request, $id)

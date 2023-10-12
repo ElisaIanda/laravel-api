@@ -35,6 +35,7 @@ class ProjectStoreRequest extends FormRequest
             "image"=>"nullable|image",
             "date"=>"required|date",
             'type_id' => 'nullable|exists:types,id',
+            'technologies' => 'nullable',
         ];
     }
 }
