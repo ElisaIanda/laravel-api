@@ -12,11 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('projects', function (Blueprint $table) {
-                $table->unsignedBigInteger('type_id')->nullable();                                        //creazione di una colonna "unsignedBigInteger. Nullable altrimenti da errore
-                $table->foreign('type_id')                                                                //creazione FOREIGN KEY
-                    ->references('id')                                                                    //che fa riferimento alla colonna ID
-                    ->on('projects')                                                                        //nella tabella USERS
-                    ->onDelete('cascade');                                                                //se lo USER viene cancellato, i suoi POST verrato anch'essi cancellati. Opzionale
+                $table->unsignedBigInteger('type_id')->nullable();                                        
             });
         }
 
