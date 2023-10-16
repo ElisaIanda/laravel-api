@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('guest.welcome');
+    return redirect("http://localhost:5175/");
 });
 
 Route::get('/dashboard', function () {
