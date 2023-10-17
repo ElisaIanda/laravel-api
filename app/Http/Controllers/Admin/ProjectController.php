@@ -88,8 +88,11 @@ class ProjectController extends Controller
             $data["image"] = $image_path;
         }
 
-        // Assegnazione delle technologies
-        $project->technologies()->sync($data["technologies"]);
+        if(isset($technologies)){
+            // Assegnazione delle technologies
+            $project->technologies()->sync($data["technologies"]);
+
+        }
 
         $project->update($data);
 
